@@ -3,32 +3,36 @@ package javase.lesson7.homework;
 
 public class Fib {
     public static void main(String[] args) {
-        System.out.println(Fi(30));
-        System.out.println(Fib(30));
+        System.out.println(fi(2));
+        System.out.println(fib(2));
     }
 
-    public static int Fi(int n) {
+    public static int fi(int n) {
+        if (n <= 0) {
+            return 0;
+        }
         if (n == 1 || n == 2) {
             return 1;
         } else {
-            return Fi(n - 1) + Fi(n - 2);
+            return fi(n - 1) + fi(n - 2);
         }
     }
 
-    public static int Fib(int n) {
-        int cache[] = new int[50];
-
-        {
-            if (cache[n] == 0) {
-                if (n == 1 || n == 2) {
-                    cache[n] = 1;
-                } else {
-                    cache[n] = Fib(n - 1) + Fib(n - 2);
-                }
+    public static int fib(int n) {
+        int cache[] = new int[n+1];
+        if (cache[n] == 0) {
+            if (n <= 0) {
+                return 0;
             }
-
-            return cache[n];
+            if (n == 1 || n == 2) {
+                cache[n] = 1;
+            } else {
+                cache[n] = fib(n - 1) + fib(n - 2);
+            }
         }
+
+        return cache[n];
     }
 }
+
 
